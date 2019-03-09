@@ -7,10 +7,8 @@ import CareLog from './CareLog';
 
 const router = new Router();
 
-router.get("/", ctx => {
-  const buffer = ReactPDF.renderToStream(
-    React.createElement(CareLog, null)
-  );
+router.get('/care-log/download/pdf', ctx => {
+  const buffer = ReactPDF.renderToStream(React.createElement(CareLog, null));
   ctx.type = "application/pdf";
   ctx.attachment("carelog.pdf");
   ctx.body = buffer;
