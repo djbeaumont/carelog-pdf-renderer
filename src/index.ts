@@ -10,7 +10,9 @@ const router = new Router();
 router.get('/care-log/download/pdf', ctx => {
   const buffer = ReactPDF.renderToStream(React.createElement(CareLog, null));
   ctx.type = "application/pdf";
-  ctx.attachment("carelog.pdf");
+  if (process.env.NODE_ENV === 'production') {
+    ctx.attachment("carelog.pdf");
+  }
   ctx.body = buffer;
 });
 
