@@ -1,0 +1,22 @@
+{
+  "name": "carelog-pdf-renderer",
+  "version": "1.0.0",
+  "description": "Renders a care log as a PDF",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "care",
+    "log",
+    "pdf"
+  ],
+  "author": "David Beaumont <david.beaumont@birdie.care>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@react-pdf/renderer": "^1.4.0",
+    "koa": "^2.7.0",
+    "react": "^16.8.4"
+  }
+}
