@@ -1,14 +1,23 @@
 import * as Koa from 'koa';
 import * as Router from 'koa-router';
-import * as React from 'react';
-import ReactPDF from '@react-pdf/renderer';
+import fetch from 'node-fetch';
+import * as qs from 'qs';
 
-import CareLog from './CareLog';
+import { Visit } from './types/Visit';
+import renderCareLog from './renderCareLog';
 
 const router = new Router();
 
-router.get('/care-log/download/pdf', ctx => {
-  const buffer = ReactPDF.renderToStream(React.createElement(CareLog, null));
+router.get('/care-log/download/pdf', async (ctx) => {
+  const query = ctx.request.query;
+  const modifiedQuery = {
+    ...query,
+  };
+
+  const response = await fetch(`http://localhost:8000/care-log?${qs.stringify(modifiedQuery)}`);
+  const visits: Visit[] = await response.json();
+
+  const buffer = renderCareLog({ visits });
   ctx.type = "application/pdf";
   if (process.env.NODE_ENV === 'production') {
     ctx.attachment("carelog.pdf");

@@ -7,6 +7,8 @@ import {
   StyleSheet
 } from '@react-pdf/renderer';
 
+import { Visit } from './types/Visit';
+
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',
@@ -19,7 +21,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const MyDocument = () => (
+export type Props = {
+  visits: Visit[];
+}
+
+const CareLog: React.FunctionComponent<Props> = ({ visits }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
@@ -28,8 +34,13 @@ const MyDocument = () => (
       <View style={styles.section}>
         <Text>Section #2</Text>
       </View>
+      {visits.map(visit => (
+        <View key={visit.id}>
+          <Text>{visit.careRecipient.firstname} {visit.careRecipient.lastname}</Text>
+        </View>
+      ))}
     </Page>
   </Document>
 );
 
-export default MyDocument;
+export default CareLog;
