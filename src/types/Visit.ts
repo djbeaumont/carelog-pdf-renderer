@@ -1,12 +1,3 @@
-export type Visit = {
-  id: string;
-  careRecipient: CareRecipient;
-  start_at: string;
-  end_at: string;
-  actual_start_at?: string;
-  actual_end_at?: string;
-};
-
 export type User = {
   id: string;
   firstname: string;
@@ -26,4 +17,9 @@ export type CareRecipient = User & {
   pharmacy_street_address: string | null;
   pharmacy_post_code: string | null;
   timezone: string;
+};
+
+export type Visit = {
+  id: string;
+  care_recipient: CareRecipient;
 };

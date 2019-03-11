@@ -15,6 +15,10 @@ router.get('/care-log/download/pdf', async (ctx) => {
   };
 
   const response = await fetch(`http://localhost:8000/care-log?${qs.stringify(modifiedQuery)}`);
+  if (response.status !== 200) {
+    throw new Error(`Unexpected status code ${response.status}`)
+  }
+
   const visits: Visit[] = await response.json();
 
   const buffer = renderCareLog({ visits });

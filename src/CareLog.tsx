@@ -4,14 +4,14 @@ import {
   Text,
   View,
   Document,
-  StyleSheet
+  StyleSheet,
 } from '@react-pdf/renderer';
 
 import { Visit } from './types/Visit';
 
 const styles = StyleSheet.create({
   page: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     backgroundColor: '#E4E4E4'
   },
   section: {
@@ -36,7 +36,7 @@ const CareLog: React.FunctionComponent<Props> = ({ visits }) => (
       </View>
       {visits.map(visit => (
         <View key={visit.id}>
-          <Text>{visit.careRecipient.firstname} {visit.careRecipient.lastname}</Text>
+          <Text>{visit.care_recipient.firstname} {visit.care_recipient.lastname}</Text>
         </View>
       ))}
     </Page>
