@@ -1,7 +1,7 @@
-import * as Koa from 'koa';
-import * as Router from 'koa-router';
+import Koa from 'koa';
+import Router from 'koa-router';
 import fetch from 'node-fetch';
-import * as qs from 'qs';
+import qs from 'qs';
 
 import { Visit } from './types/Visit';
 import { renderCareLog, renderCriticalDetails } from './renderPdf';

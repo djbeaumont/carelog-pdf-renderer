@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from '@react-pdf/renderer';
 
+// import Page from '../../atoms/Page';
 import { Visit } from '../../types/Visit';
 
 const styles = StyleSheet.create({
