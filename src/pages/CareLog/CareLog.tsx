@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from '@react-pdf/renderer';
 
-import { Visit } from './types/Visit';
+import { Visit } from '../../types/Visit';
 
 const styles = StyleSheet.create({
   page: {
